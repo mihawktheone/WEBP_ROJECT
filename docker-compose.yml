@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: backend/
+    ports:
+      - "3000:3000"  # เปลี่ยนพอร์ตตามที่แอปพลิเคชันของคุณใช้
+    environment:
+      - NODE_ENV=production  # หรือ environment variables อื่นๆ ตามที่ต้องการ
+    volumes:
+      - ./backend:/app
+
+  fontend:
+    build: CurrencyExchange/
+    ports:
+      - "3001:5173"
+    #volumes:
+     # - ./CurrencyExchange:/app/frontend

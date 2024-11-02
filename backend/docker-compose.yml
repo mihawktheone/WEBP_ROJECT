@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "3000:3000"  # เปลี่ยนพอร์ตตามที่แอปพลิเคชันของคุณใช้
+    environment:
+      - NODE_ENV=production  # หรือ environment variables อื่นๆ ตามที่ต้องการ
+    volumes:
+      - ./:/app

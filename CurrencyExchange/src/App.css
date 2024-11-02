@@ -1,0 +1,67 @@
+/* src/App.css */
+.App {
+    font-family: Arial, sans-serif;
+    color: rgb(0, 254, 246);
+    text-align: center;
+    margin-top: 50px;
+   }
+   
+   
+   .exchange-container {
+    width: 100%;
+    margin: auto;
+    max-width: 600px;
+    border: 2px solid #030bfb;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+   
+   
+   
+   
+   .date-picker {
+    margin: 16px 0;
+    font-size: 16px;
+   }
+   
+   
+   .error {
+    color: red;
+   }
+   
+   
+   .rates ul {
+    list-style-type: none;
+    padding: 0;
+   }
+   
+   
+   .rates li {
+    margin: 8px 0;
+    font-weight: bold;
+   }
+   
+   
+   .currency-select {
+    margin: 15px 0;
+   }
+   
+   
+   .currency-select select {
+    padding: 5px;
+    font-size: 15px;
+   }
+   
+   
+   .chart-container {
+    width: 80%;
+    margin: 50px auto;
+    max-width: 800px;
+    border: 1px solid #ff0000;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+   
+   
