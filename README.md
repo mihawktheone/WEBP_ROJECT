@@ -1,6 +1,6 @@
 # BTC Exchange Rates
 
-[git clone https://github.com/mihawktheone/WEB_PROJECT.git]  
+[https://github.com/mihawktheone/WEB_PROJECT.git]  
 เป็น Web Application ในการแสดงอัตราการแลกเปลี่ยนต่อ 1 BTC เป็นแต่ละ สกุลเงิน Digital ต่างๆ  
 ข้อมูลแสดงรายวันและแสดงกราฟย้อนหลังจากวันปัจจุบันไป 30 วัน เพื่อเห็นแนวโน้ม  
 โดย  API ที่ใช้จะเป็นสรุปย้อนหลังในแต่ละวัน โดยจะไม่มีการ update แบบ Real-Time ทันที  
