@@ -45,14 +45,16 @@ CurrencyExchangeProject/<br>
 &nbsp;│<br>
 &nbsp;|── front-end(CurrencyExchange)/<br>
 &nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── Dockerfile  # Front-end Dockerfile<br>
-&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other front-end files<br>
+&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other front-end files<br>
 &nbsp;│<br>
 &nbsp;|── back-end(backend)/<br>
 &nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── Dockerfile  # back-end Dockerfile<br>
-&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other back-end files<br>
+&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other back-end files<br>
 &nbsp;│<br>
 &nbsp;|── docker-compose.yml<br>
   
+
+    
 ใช้ Dockerfile และ docker-compose  
 ทั้งใน Front-end และ Back-end จะมี Dockerfile สำหรับ run  
 และมี docker-compose.yml ในการ build ทั้ง Back-end และ Front-end  
