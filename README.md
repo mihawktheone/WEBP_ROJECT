@@ -7,9 +7,8 @@
 [http://13.214.66.96:3001/]  
   
 <img width="802" alt="WEB_PROJECT1" src="https://github.com/user-attachments/assets/0d005016-22b3-4434-a16a-39828711e102">
-<br>
-<br>
-<br>
+  
+  
 ## 1.หลักการพัฒนา
 
 ### Front-end ใช้ Bun Vite+React Javascript 
