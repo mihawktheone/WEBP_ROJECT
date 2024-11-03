@@ -43,15 +43,15 @@ Vite ใช้ ES Modules เป็นหลัก ซึ่งเข้าก�
 ## 3.วิธี Deploy
 CurrencyExchangeProject/<br>
 &nbsp;│<br>
-&nbsp;|── front-end(CurrencyExchange)/<br>
+&nbsp;|─ front-end(CurrencyExchange)/<br>
 &nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── Dockerfile  # Front-end Dockerfile<br>
 &nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other front-end files<br>
 &nbsp;│<br>
-&nbsp;|── back-end(backend)/<br>
+&nbsp;|─ back-end(backend)/<br>
 &nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── Dockerfile  # back-end Dockerfile<br>
 &nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other back-end files<br>
 &nbsp;│<br>
-&nbsp;|── docker-compose.yml<br>
+&nbsp;|─ docker-compose.yml<br>
   
 
     
