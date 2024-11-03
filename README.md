@@ -60,14 +60,17 @@ CurrencyExchangeProject/
 ทำการติดตั้ง docker และ docker-compose ก่อนการใช้งาน
 
 ทำการดึงไฟล์ทั้งหมดจาก github
-
-   bash 
+``` bash 
 git clone https://github.com/mihawktheone/WEB_PROJECT.git
+```
 
 ทำการ Build 
+``` bash
 docker-compose up -d --build หรือ docker-compose up
+```
 
 การณี down
+``` bash
 docker-compose down
-
+```
 
