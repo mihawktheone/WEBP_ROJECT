@@ -41,17 +41,17 @@ Vite ใช้ ES Modules เป็นหลัก ซึ่งเข้าก�
 ซึ่งทำเป็น API จาก Database ให้ Front-end นำไปใช้งานต่อในการแสดงข้อมูล  
 
 ## 3.วิธี Deploy
-CurrencyExchangeProject/  
-│  
-├── front-end(CurrencyExchange)/  
-│   ├── Dockerfile  # Front-end Dockerfile  
-│   └── ...         # Other front-end files  
-│  
-├── back-end(backend)/  
-│   ├── Dockerfile  # back-end Dockerfile  
-│   └── ...         # Other back-end files  
-│  
-└── docker-compose.yml  
+CurrencyExchangeProject/<br>
+│<br>
+ ├── front-end(CurrencyExchange)/<br>
+│  ├── Dockerfile  # Front-end Dockerfile<br>
+│  └── ...         # Other front-end files<br>
+│<br>
+ ├── back-end(backend)/<br>
+│  ├── Dockerfile  # back-end Dockerfile<br>
+│  └── ...         # Other back-end files<br>
+│<br>
+ └── docker-compose.yml<br>
   
 ใช้ Dockerfile และ docker-compose  
 ทั้งใน Front-end และ Back-end จะมี Dockerfile สำหรับ run  
