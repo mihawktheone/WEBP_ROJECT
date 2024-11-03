@@ -42,7 +42,7 @@ Vite ใช้ ES Modules เป็นหลัก ซึ่งเข้าก�
 
 ## 3.วิธี Deploy
 CurrencyExchangeProject/<br>
- │<br>
+&nbsp;│<br>
 ├── front-end(CurrencyExchange)/<br>
 │&nbsp;&nbsp;&nbsp;&nbsp;├── Dockerfile  # Front-end Dockerfile<br>
 │&nbsp;&nbsp;&nbsp;&nbsp;└── ...         # Other front-end files<br>
