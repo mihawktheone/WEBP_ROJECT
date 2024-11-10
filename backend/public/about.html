@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - BTC Exchange Rates</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>BTC Exchange Rates Project</h1>
+       <a href="http://13.214.66.96:3001/">http://13.214.66.96:3001/</a><br>
+    <img src=images/WEB_PROJECT1.png width="565.8" height="557.4" />
+    <p>
+     เป็น Web Application ในการแสดงอัตราการแลกเปลี่ยนต่อ 1 BTC เป็น สกุลเงิน Digital ต่างๆ ข้อมูลแสดงรายวันและแสดงกราฟย้อนหลังจากวันปัจจุบันไป 30 วัน เพื่อเห็นแนวโน้มของอัตราการแลกเปลี่ยน โดย API ที่ใช้จะเป็นสรุปย้อนหลังในแต่ละวัน โดยจะไม่มีการ update แบบ Real-Time ทันที
+    </p>
+
+    <section>
+      <h2>1. หลักการพัฒนา</h2>
+      <p>
+        <h3>Front-end ใช้ Bun Vite+React Javascript</h3>
+        Bun เป็น runtime ที่มีประสิทธิภาพสูงมาก ทำให้ขั้นตอนการติดตั้งและการ build เร็วขึ้น ซึ่งช่วยลดเวลาในการพัฒนาลงได้ Vite และ React การตั้งค่าเริ่มต้นโปรเจกต์มีความรวดเร็ว และการติดตั้งรวมถึงการตั้งค่าพื้นฐานก็ไม่ซับซ้อน ทำให้เริ่มต้นพัฒนาได้ทันทีโดยไม่ต้องตั้งค่า config เยอะ Vite ใช้ ES Modules เป็นหลัก ซึ่งเข้ากันได้ดีกับโครงสร้างการทำงานแบบใหม่ใน JavaScript ทำให้การนำเข้าและจัดการโมดูลมีความเป็นระเบียบและใช้งานได้ง่ายกว่า
+      </p>
+      <p>
+        <h3>Database ใช้ PostgreSQL</h3>
+        PostgreSQL มีฟีเจอร์ JSONB ทำให้สามารถจัดเก็บและจัดการข้อมูล JSON ได้อย่างมีประสิทธิภาพ เหมาะกับการพัฒนาแอปพลิเคชันที่ต้องการการจัดเก็บข้อมูลแบบกึ่งโครงสร้าง (Semi-structured data) และใช้งานร่วมกับ NoSQL ได้ในบางกรณี ทำให้มีความยืดหยุ่นสูง
+      </p>
+      <p>
+        <h3>Back-end ใช้ Bun Express</h3>
+        Express เป็นเฟรมเวิร์กที่เบาและมีความยืดหยุ่นสูง ซึ่งช่วยให้สามารถตั้งค่าและจัดการเส้นทาง (routes) ได้อย่างง่ายดาย ทำให้เหมาะสำหรับการพัฒนา API และเว็บเซิร์ฟเวอร์ การทำงานร่วมกับ Express ใน Bun ทำให้สามารถใช้ประโยชน์จาก Middleware ต่างๆ ที่มีอยู่แล้วใน Express และสามารถขยายระบบเพิ่มเติมได้ตามความต้องการ
+      </p>
+    </section>
+
+    <section>
+      <h2>2. API ที่สำคัญ</h2>
+      <p>
+        ดึงข้อมูลอัตราแลกเปลี่ยนสกุลเงิน Digital ประจำวันต่อ 1BTC จาก <br>
+        <a href="https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/btc.json">https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/btc.json</a>. 
+      </p>
+      <p>
+        ซึ่งจะแสดงวันที่ล่าสุด และการดึงข้อมูลย้อนหลังจะเปลี่ยนช่วงวันที่จาก  <br>
+         <a href="https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2024-10-01/v1/currencies/btc.json">https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2024-10-01/v1/currencies/btc.json</a> 
+      </p>
+    </section>
+
+    <section>
+      <h2>3. วิธี Deploy</h2>
+      <p>
+&nbsp;│<br>
+&nbsp;|─ front-end(CurrencyExchange)/<br>
+&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── Dockerfile  # Front-end Dockerfile<br>
+&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other front-end files<br>
+&nbsp;│<br>
+&nbsp;|─ back-end(backend)/<br>
+&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── Dockerfile  # back-end Dockerfile<br>
+&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|── ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Other back-end files<br>
+&nbsp;│<br>
+&nbsp;|─ docker-compose.yml<br>
+      </p>
+      <br>
+
+      <p>
+      ใช้ Dockerfile และ docker-compose <br> 
+      ทั้งใน Front-end และ Back-end จะมี Dockerfile สำหรับ run  <br>
+      และมี docker-compose.yml ในการ build ทั้ง Back-end และ Front-end  <br>
+      </p>
+      <br>
+
+      <p>
+      การทดสอบ Deploy ที่เครื่อง  
+      ทำการติดตั้ง docker และ docker-compose ก่อนการใช้งาน  
+      </p>
+      <p>
+      ทำการดึงไฟล์ทั้งหมดจาก github<br>
+       <pre><code>git clone </code><a href=https://github.com/mihawktheone/WEB_PROJECT.git>https://github.com/mihawktheone/WEB_PROJECT.git</a></code></pre>
+      </p>
+      <br>
+      <p>ทำการ build<br>
+        <pre><code>docker-compose up -d --build หรือ docker-compose up</code></pre>
+        <br>
+      </p>
+      <p>กรณี Down</p>
+      <pre><code>docker-compose down</code></pre>
+    </section>
+
+    <section>
+      <p>
+        <a href="http://13.214.66.96:3001/" target="_blank">Back to CurrencyExchange</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>ข้อมูลนี้เป็นส่วนหนึ่งของ<br>
+        รายวิชาวิศวกรรมเว็บและคลาวด์ หลักสูตรวิศวกรรมศาสตรมหาบัณฑิต<br> 
+        วิทยาลัยวิศวกรรมศาสตร์และเทคโนโลยี<br>
+        มหาวิทยาลัยธุรกิจบัณฑิตย์<br>
+        <br>
+        นายปฏิวัติ สบายยิ่ง
+        <br>
+        อาจารย์ที่ปรึกษา ผศ.ดร.ชัยพร เขมะภาตะพันธ์ <br>
+        <img src=images/logo-cite-edit.jpg width="360" height="250" />
+      </p>
+    </footer>
+  
+  </div>
+</body>
+</html>

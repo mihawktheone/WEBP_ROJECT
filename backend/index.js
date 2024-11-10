@@ -2,6 +2,7 @@ import express from 'express';
 import { Client } from 'pg';
 import axios from 'axios';
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 const port = 3000;
@@ -9,11 +10,11 @@ const port = 3000;
 
 // ตั้งค่าการเชื่อมต่อฐานข้อมูล PostgreSQL
 const client = new Client({
-   host: '13.214.66.96',
-   port: 5432,
-   user: 'postgres',
-   password: '1234',
-   database: 'postgres'
+   host: process.env.DATABASE_HOST,
+   port: process.env.DATABASE_PORT,
+   user: process.env.DATABASE_USER,
+   password: process.env.DATABASE_PASSWORD,
+   database: process.env.DATABASE_NAME
 });
 
 // ฟังก์ชันเพื่อแปลงวันที่เป็นสตริงในรูปแบบ 'YYYY-MM-DD'
@@ -68,30 +69,69 @@ async function fetchHistoricalDataAndUpdate(startDate) {
 
 // เชื่อมต่อกับฐานข้อมูลและตรวจสอบข้อกำหนด UNIQUE
 client.connect()
-   .then(async () => {
-       console.log('Connected to PostgreSQL');
+    .then(async () => {
+        console.log('Connected to PostgreSQL');
 
-       await client.query(`
-           DO $$
-           BEGIN
-               IF NOT EXISTS (
-                   SELECT 1 FROM pg_constraint
-                   WHERE conname = 'unique_currency_entry'
-                   AND conrelid = 'currency'::regclass
-               ) THEN
-                   ALTER TABLE currency
-                   ADD CONSTRAINT unique_currency_entry UNIQUE (date, currency, btcdata);
-               END IF;
-           END
-           $$;
-       `);
-       console.log("Unique constraint ensured on (date, currency, btcdata)");
+        // Ensure the 'currency' table exists with required columns
+        await client.query(`
+            DO $$
+            BEGIN
+                IF NOT EXISTS (SELECT FROM pg_tables WHERE tablename = 'currency') THEN
+                    CREATE TABLE currency (
+                        date DATE,
+                        currency TEXT,
+                        btc NUMERIC,
+                        btcdata TEXT
+                    );
+                END IF;
 
-       // ดึงข้อมูลย้อนหลังตั้งแต่วันที่ที่กำหนดจนถึงวันนี้
-       await fetchHistoricalDataAndUpdate('2024-10-01');
-   })
-   .catch(err => console.error('Connection error', err.stack));
+                -- Ensure each column exists, if the table already exists
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'date') THEN
+                    ALTER TABLE currency ADD COLUMN date DATE;
+                END IF;
+
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'currency') THEN
+                    ALTER TABLE currency ADD COLUMN currency TEXT;
+                END IF;
+
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'btc') THEN
+                    ALTER TABLE currency ADD COLUMN btc NUMERIC;
+                END IF;
+
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'btcdata') THEN
+                    ALTER TABLE currency ADD COLUMN btcdata TEXT;
+                END IF;
+            END
+            $$;
+        `);
+
+        console.log("Table and columns ensured");
+
+        // Ensure the unique constraint exists
+        await client.query(`
+            DO $$
+            BEGIN
+                IF NOT EXISTS (
+                    SELECT 1 FROM pg_constraint
+                    WHERE conname = 'unique_currency_entry'
+                    AND conrelid = 'currency'::regclass
+                ) THEN
+                    ALTER TABLE currency
+                    ADD CONSTRAINT unique_currency_entry UNIQUE (date, currency, btcdata);
+                END IF;
+            END
+            $$;
+        `);
+        console.log("Unique constraint ensured on (date, currency, btcdata)");
+
+        // Fetch historical data starting from 2024-10-01
+        await fetchHistoricalDataAndUpdate('2024-10-01');
+    })
+    .catch(err => console.error('Connection error', err.stack));
 app.use(cors())
+
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get('/', (req, res) => {
     res.send('Welcome to the BTC Currency Exchange API!');
 });
@@ -119,7 +159,14 @@ app.get('/api/currency-data', async (req, res) => {
    }
 });
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get("/about", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "about.html"));
+  });
+
 // เริ่มเซิร์ฟเวอร์
 app.listen(port, () => {
    console.log(`Server is running on http://localhost:${port}`);
 });
+

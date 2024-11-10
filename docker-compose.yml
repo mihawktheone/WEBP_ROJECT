@@ -1,16 +1,45 @@
+
 services:
   backend:
     build: backend/
     ports:
-      - "3000:3000"  # เปลี่ยนพอร์ตตามที่แอปพลิเคชันของคุณใช้
+      - "3000:3000"  # Adjust the port if needed
     environment:
-      - NODE_ENV=production  # หรือ environment variables อื่นๆ ตามที่ต้องการ
+      - NODE_ENV=production  # Add any other environment variables you need
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=1234
+      - DATABASE_NAME=postgres
     volumes:
       - ./backend:/app
 
-  fontend:
+    networks:
+      - appnetwork
+
+    depends_on:
+      - postgres  # Ensure backend waits for the database to be ready
+
+  frontend:
     build: CurrencyExchange/
     ports:
-      - "3001:5173"
-    #volumes:
-     # - ./CurrencyExchange:/app/frontend
+      - "3001:5173"  # Adjust frontend port as needed
+
+  postgres:
+    image: postgres:15  # Specify the desired version of PostgreSQL
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist PostgreSQL data
+
+    networks:
+      - appnetwork
+
+volumes:
+  postgres_data:  # Named volume for PostgreSQL data persistence
+
+networks:
+  appnetwork:
+    driver: bridge

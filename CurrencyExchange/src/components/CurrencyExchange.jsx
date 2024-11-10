@@ -4,6 +4,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import BtcChart from './BtcChart';
 
+
+
 const CurrencyExchange = () => {
   const [btcRates, setBtcRates] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -72,6 +74,7 @@ const CurrencyExchange = () => {
 
   return (
     <div className="exchange-container">
+      
       <h1>BTC Exchange Rates</h1>
 
       <div className="date-picker">
@@ -116,8 +119,18 @@ const CurrencyExchange = () => {
         selectedCurrency={selectedCurrency}
         setSelectedCurrency={setSelectedCurrency}
       />
+
+      
+       {/* ปุ่มเพื่อเปิด about.html */}
+      <div className="About">
+        <button onClick={() => window.open('http://13.214.66.96:3000/about.html', '_blank')}>
+          Go to About
+        </button>
+      </div>
     </div>
   );
 };
+
+
 
 export default CurrencyExchange;

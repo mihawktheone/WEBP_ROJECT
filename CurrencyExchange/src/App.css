@@ -63,5 +63,48 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
    }
-   
-   
+
+.About {
+margin-top: 20px;
+font-size: 16px;
+text-align: center;
+}
+
+.About button {
+padding: 10px 20px;
+background-color: #030bfb;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s ease;
+}
+
+.About button:hover {
+background-color: #001b9c;
+}
+
+.About a {
+display: inline-block;
+padding: 10px 20px;
+background-color: #030bfb;
+color: white;
+border-radius: 5px;
+text-decoration: none;
+font-size: 16px;
+transition: background-color 0.3s ease;
+}
+
+.About a:hover {
+background-color: #001b9c;
+}
+
+/* สำหรับการแสดงรูปภาพ */
+img {
+display: block;
+margin-top: 20px;
+width: 100px;
+height: auto;
+}
+
