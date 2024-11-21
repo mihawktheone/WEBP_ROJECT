@@ -1,0 +1,7 @@
+.chart-container {
+    width: 90%;
+    height: 400px; /* กำหนดความสูงให้คงที่ */
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden; /* ป้องกันการขยาย */
+  }

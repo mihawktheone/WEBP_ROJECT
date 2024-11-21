@@ -51,7 +51,7 @@ async function fetchHistoricalDataAndUpdate(startDate) {
                        }
 
                        await client.query(
-                           `INSERT INTO currency (date, btcdata, currency, btc) VALUES ($1, $2, $3, $4)
+                           `INSERT INTO ps_currency (date, btcdata, currency, btc) VALUES ($1, $2, $3, $4)
                             ON CONFLICT (date, currency, btcdata) DO NOTHING`,
                            [date, 'btc', currency, btcValue]
                        );
@@ -76,8 +76,8 @@ client.connect()
         await client.query(`
             DO $$
             BEGIN
-                IF NOT EXISTS (SELECT FROM pg_tables WHERE tablename = 'currency') THEN
-                    CREATE TABLE currency (
+                IF NOT EXISTS (SELECT FROM pg_tables WHERE tablename = 'ps_currency') THEN
+                    CREATE TABLE ps_currency (
                         date DATE,
                         currency TEXT,
                         btc NUMERIC,
@@ -86,20 +86,20 @@ client.connect()
                 END IF;
 
                 -- Ensure each column exists, if the table already exists
-                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'date') THEN
-                    ALTER TABLE currency ADD COLUMN date DATE;
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'ps_currency' AND column_name = 'date') THEN
+                    ALTER TABLE ps_currency ADD COLUMN date DATE;
                 END IF;
 
-                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'currency') THEN
-                    ALTER TABLE currency ADD COLUMN currency TEXT;
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'ps_currency' AND column_name = 'currency') THEN
+                    ALTER TABLE ps_currency ADD COLUMN currency TEXT;
                 END IF;
 
-                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'btc') THEN
-                    ALTER TABLE currency ADD COLUMN btc NUMERIC;
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'ps_currency' AND column_name = 'btc') THEN
+                    ALTER TABLE ps_currency ADD COLUMN btc NUMERIC;
                 END IF;
 
-                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'currency' AND column_name = 'btcdata') THEN
-                    ALTER TABLE currency ADD COLUMN btcdata TEXT;
+                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'ps_currency' AND column_name = 'btcdata') THEN
+                    ALTER TABLE ps_currency ADD COLUMN btcdata TEXT;
                 END IF;
             END
             $$;
@@ -113,11 +113,11 @@ client.connect()
             BEGIN
                 IF NOT EXISTS (
                     SELECT 1 FROM pg_constraint
-                    WHERE conname = 'unique_currency_entry'
-                    AND conrelid = 'currency'::regclass
+                    WHERE conname = 'unique_ps_currency_entry'
+                    AND conrelid = 'ps_currency'::regclass
                 ) THEN
-                    ALTER TABLE currency
-                    ADD CONSTRAINT unique_currency_entry UNIQUE (date, currency, btcdata);
+                    ALTER TABLE ps_currency
+                    ADD CONSTRAINT unique_ps_currency_entry UNIQUE (date, currency, btcdata);
                 END IF;
             END
             $$;
@@ -151,7 +151,7 @@ app.get('/api/currency', async (req, res) => {
 // Endpoint ใหม่สำหรับส่งข้อมูลให้ Front-end
 app.get('/api/currency-data', async (req, res) => {
    try {
-       const result = await client.query(`SELECT date, currency, btc FROM currency ORDER BY date ASC`);
+       const result = await client.query(`SELECT date, currency, btc FROM ps_currency ORDER BY date ASC`);
        res.json(result.rows);
    } catch (error) {
        console.error('Error fetching currency data for front-end:', error.message);

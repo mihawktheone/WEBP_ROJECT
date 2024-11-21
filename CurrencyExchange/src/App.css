@@ -1,110 +1,155 @@
-/* src/App.css */
-.App {
-    font-family: Arial, sans-serif;
-    color: rgb(0, 254, 246);
-    text-align: center;
-    margin-top: 50px;
-   }
-   
-   
-   .exchange-container {
-    width: 100%;
-    margin: auto;
-    max-width: 600px;
-    border: 2px solid #030bfb;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   }
-   
-   
-   
-   
-   .date-picker {
-    margin: 16px 0;
-    font-size: 16px;
-   }
-   
-   
-   .error {
-    color: red;
-   }
-   
-   
-   .rates ul {
-    list-style-type: none;
+
+
+   body {
+    margin: 0;
     padding: 0;
-   }
-   
-   
-   .rates li {
-    margin: 8px 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #ff6f61, #ff3d30);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .exchange-container {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 0.5s ease-in-out;
+
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .date-picker label,
+  .currency-select label {
     font-weight: bold;
-   }
-   
-   
-   .currency-select {
-    margin: 15px 0;
-   }
-   
-   
-   .currency-select select {
-    padding: 5px;
-    font-size: 15px;
-   }
-   
-   
-   .chart-container {
-    width: 80%;
-    margin: 50px auto;
-    max-width: 800px;
-    border: 1px solid #ff0000;
+    display: block;
+    margin-bottom: 5px;
+  
+  }
+  
+  .currency-select select,
+
+  .date-picker input {
+    text-align: center;
+    width: 100;
     padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+  
+  button {
+    background: #ff6f61;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #ff3d30;
+    transform: translateY(-2px);
+  }
+  
+  .rates h3 {
+    font-size: 1.2rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.2);
+  }
+  
+  .chart-container {
+    color: rgb(7, 7, 7);
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .About {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
    }
 
-.About {
-margin-top: 20px;
-font-size: 16px;
-text-align: center;
-}
+   .About button {
+    padding: 10px 20px;
+    background-color: #2a6af3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+   }
 
-.About button {
-padding: 10px 20px;
-background-color: #030bfb;
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-size: 16px;
-transition: background-color 0.3s ease;
-}
+   .About button:hover {
+    background-color: #001b9c;
+   }
 
-.About button:hover {
-background-color: #001b9c;
-}
+   .About a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #030bfb;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+   }
 
-.About a {
-display: inline-block;
-padding: 10px 20px;
-background-color: #030bfb;
-color: white;
-border-radius: 5px;
-text-decoration: none;
-font-size: 16px;
-transition: background-color 0.3s ease;
-}
-
-.About a:hover {
-background-color: #001b9c;
-}
-
-/* สำหรับการแสดงรูปภาพ */
-img {
-display: block;
-margin-top: 20px;
-width: 100px;
-height: auto;
-}
-
+   .About a:hover {
+    background-color: #001b9c;
+   }
+   

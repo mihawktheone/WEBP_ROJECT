@@ -8,6 +8,9 @@
 [http://13.214.66.96:3001/]  
   
 <img width="802" alt="WEB_PROJECT1" src="https://github.com/user-attachments/assets/0d005016-22b3-4434-a16a-39828711e102">
+
+<img width="802" alt="WEB_FLOW" src="https://github.com/user-attachments/assets/b5797f4e-1166-4724-93e4-3368c8b13975">
+
   
   
 ## 1.หลักการพัฒนา
@@ -83,7 +86,7 @@ docker-compose down
 มหาวิทยาลัยธุรกิจบัณฑิตย์<br>
 <br>
 นายปฏิวัติ สบายยิ่ง<br>
-อาจารย์ที่ปรึกษา ผศ.ดร.ชัยพร เขมะภาตะพันธ์<br>
+<a href="https://cite.dpu.ac.th/ResumeDean.html"> อาจารย์ที่ปรึกษา ผศ.ดร.ชัยพร เขมะภาตะพันธ์</a>
 
 
 ![logo-cite-edit](https://github.com/user-attachments/assets/352a53c0-341f-4d4a-afa8-d3d67340ef70)
