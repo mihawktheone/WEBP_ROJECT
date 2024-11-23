@@ -5,9 +5,9 @@
 ข้อมูลแสดงรายวันและแสดงกราฟย้อนหลังจากวันปัจจุบันไป 30 วัน เพื่อเห็นแนวโน้ม  
 โดย  API ที่ใช้จะเป็นสรุปย้อนหลังในแต่ละวัน โดยจะไม่มีการ update แบบ Real-Time ทันที  
 
-[http://13.214.66.96:3001/]  
+[http://18.142.218.90/:3001/]  
   
-<img width="802" alt="WEB_PROJECT1" src="https://github.com/user-attachments/assets/0d005016-22b3-4434-a16a-39828711e102">
+<img width="1071" alt="WEB_PROJECT2" src="https://github.com/user-attachments/assets/175dade5-9461-42cc-b6ad-042b8037b7da">
 
 <img width="802" alt="WEB_FLOW" src="https://github.com/user-attachments/assets/b5797f4e-1166-4724-93e4-3368c8b13975">
 
