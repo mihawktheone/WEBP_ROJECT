@@ -7,9 +7,9 @@
 
 [http://18.142.218.90:3001/]  
   
-<img width="1071" alt="WEB_PROJECT2" src="https://github.com/user-attachments/assets/175dade5-9461-42cc-b6ad-042b8037b7da">
+<img width="900" alt="WEB_PROJECT2" src="https://github.com/user-attachments/assets/175dade5-9461-42cc-b6ad-042b8037b7da">
 
-<img width="802" alt="WEB_FLOW" src="https://github.com/user-attachments/assets/b5797f4e-1166-4724-93e4-3368c8b13975">
+<img width="900" alt="WEB_FLOW" src="https://github.com/user-attachments/assets/b5797f4e-1166-4724-93e4-3368c8b13975">
 
   
   
