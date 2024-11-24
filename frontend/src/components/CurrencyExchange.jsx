@@ -19,7 +19,7 @@ const CurrencyExchange = () => {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.get('http://13.214.66.96:3000/api/currency-data');
+      const { data } = await axios.get('http://18.142.218.90:3000/api/currency-data');
 
       if (Array.isArray(data) && data.length > 0) {
         const formattedData = data.map(entry => ({
@@ -115,7 +115,7 @@ const CurrencyExchange = () => {
 
 
       <div className="About">
-        <button onClick={() => window.open('http://13.214.66.96:3000/about.html', '_blank')}>
+        <button onClick={() => window.open('http://18.142.218.90:3000/about.html', '_blank')}>
           Go to About
         </button>
       </div>

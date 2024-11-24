@@ -26,7 +26,7 @@ const BtcChart = ({ availableCurrencies, selectedCurrency, setSelectedCurrency }
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.get('http://13.214.66.96:3000/api/currency-data');
+      const { data } = await axios.get('http://18.142.218.90:3000/api/currency-data');
       
       const filteredData = data
         .filter(entry => entry.currency === selectedCurrency)
