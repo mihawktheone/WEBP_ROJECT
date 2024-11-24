@@ -23,7 +23,7 @@ services:
   frontend:
     build: frontend/
     ports:
-      - "3001:5173"  # Adjust frontend port as needed
+      - "80:5173"  # Adjust frontend port as needed
 
   postgres:
     image: postgres:15  # Specify the desired version of PostgreSQL
